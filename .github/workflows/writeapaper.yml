@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       # Edit here with the names of your latex file and directory (can use ".")
-      DIR: NEW
+      DIR: notes
       FILE: ShortNotes
     steps:
       - name: Checkout
