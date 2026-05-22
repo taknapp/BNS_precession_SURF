@@ -1,0 +1,333 @@
+\documentclass[floats,floatfix,showpacs,amssymb,prd,twocolumn,superscriptaddress,nofootinbib,nolongbibliography,reprint,onecolumn]{revtex4-2}
+
+
+\usepackage{amssymb,amsmath,verbatim,mathtools,needspace,enumitem,etoolbox,graphicx,physics,microtype,afterpage,bigints,gensymb,tabularx,xspace}
+
+\usepackage[dvipsnames, usenames]{xcolor}
+\definecolor{linkcolor}{rgb}{0.0,0.3,0.5}
+\definecolor{dodgerblue}{HTML}{1E90FF}
+\usepackage[unicode, colorlinks=true, linkcolor=linkcolor, citecolor=linkcolor, filecolor=linkcolor,urlcolor=linkcolor, pdfusetitle]{hyperref}
+\usepackage[all]{hypcap}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{orcidlink}
+\DeclareMathOperator\sign{sgn}
+\newcommand{\chieff}{\chi_{\rm eff}}
+\newcommand{\deltachi}{\delta \chi}
+\newcommand{\chicons}{\chi_{\rm cons}}
+\newcommand{\chiquad}{\chi_{\rm quad}}
+\interfootnotelinepenalty=10000
+\newcommand{\ssim}{\mathchar"5218\relax\,}
+\newcommand{\ttimes}{\!\times\!\relax}
+
+\renewcommand{\vec}[1]{\mathbf{#1}}
+
+\makeatletter
+\newcommand*{\balancecolsandclearpage}{\close@column@grid \cleardoublepage \twocolumngrid}
+\makeatother
+
+\renewcommand{\labelenumi}{\theenumi}
+\renewcommand{\theenumi}{(\roman{enumi})}
+
+%\usepackage{draftwatermark}\SetWatermarkText{Draft} \SetWatermarkScale{4} \SetWatermarkAngle{30}
+
+\newcommand{\milan}{\affiliation{Dipartimento di Fisica ``G. Occhialini'', Universit\'a degli Studi di Milano-Bicocca, Piazza della Scienza 3, 20126 Milano, Italy}}
+\newcommand{\infn}{\affiliation{INFN, Sezione di Milano-Bicocca, Piazza della Scienza 3, 20126 Milano, Italy}}
+
+\newcommand{\gf}[1]{{\color{PineGreen}GF: #1}}
+
+
+\begin{document}
+
+\title{Short notes}
+
+\author{Giulia Fumagalli$\,$\orcidlink{0009-0004-2044-989X}}
+\email{gfumagal@caltech.edu}
+\affiliation{TAPIR 350-17, California Institute of Technology, 1200 E California Boulevard, Pasadena, CA 91125, USA}
+\milan \infn 
+
+
+\author{friends}
+
+\pacs{}
+
+\date{\today}
+
+\begin{abstract}
+
+I'm an abstract.
+
+\end{abstract}
+
+\maketitle
+
+
+
+\section{Introduction}
+
+
+
+
+
+
+Let us consider a compact binary system with component masses $m_1$ and $m_2$, mass ratio $q = m_2/m_1 \leq 1$, and total mass $M = m_1 + m_2$. Each object carries a spin vector
+${\boldsymbol{S}}_i = \chi_i m_i^2 \hat{\boldsymbol{S}}_i$ with $i=1,2$,
+where $\chi_i \in [0,1]$ is the dimensionless Kerr parameter, $\hat{\boldsymbol{S}}_i$ is spin direction, and we use geometric units $c=G=1$.  The orbital angular momentum is
+${\boldsymbol{L}} = m_1 m_2 \sqrt{r/M} \hat{\boldsymbol{L}}$,
+with $\hat{\boldsymbol{L}}$ the unit vector normal to the orbital plane and $r$ the orbital separation. The spin-orbit misalignment angles are defined as
+$\theta_i = \arccos \hat{\boldsymbol{S}}_i \cdot \hat{\boldsymbol{L}}$.
+
+Finally, each component is characterized by a spin-induced quadrupole moment
+\begin{equation}\label{Q}
+Q= - k\, \chi^2 M^3,
+\end{equation}
+where  $k$ is a scalar quantity that depends on the object's internal structure. For BHs, the no-hair theorems imply $k=1$, while NSs typically have $k \sim 2-14$~\cite{1999ApJ...512..282L} depending on their equation of state, boson stars can reach $k\sim 10-150$~\cite{1997PhRvD..55.6081R}, and gravastars may even feature negative values of $k$~\cite{2016CQGra..33b5005U}. 
+
+The angular momentum vectors of the system precess due to general relativistic effects. The orbit-averaged equations of motion at 2PN are given by~\cite{2021arXiv210610291K} and read as follows
+\begin{align}
+\label{eq:spinomega1}
+\frac{\dd \boldsymbol{S}_1}{\dd t} &= \frac{1}{2 r^3} \Bigg\{ \left[ 4+3q  - \frac{3 (1+q)^2}{\sqrt{r /M}}  \left( k_1 \boldsymbol{S}_1+\frac{\boldsymbol{S}_2}{q} \right)\!\cdot\!\frac{\hat{\boldsymbol{L}}}{M^2}\right] \! \boldsymbol{L}+ \boldsymbol{S}_2\Bigg\}  \times \boldsymbol{S}_1,
+\\
+\label{eq:spinomega2}
+\frac{\dd \boldsymbol{S}_2}{\dd t}  &= \frac{1}{2 r^3}\Bigg\{ \left[ 4+\frac{3}{q}  - \frac{3 (1+q)^2}{q\sqrt{r / M}}  \left( \boldsymbol{S}_1+ k_2 \frac{\boldsymbol{S}_2}{q} \right) \!\cdot\! \frac{\hat{\boldsymbol{L}}}{M^2}  \right]\! \boldsymbol{L} + \boldsymbol{S}_1\Bigg\} \times \boldsymbol{S}_2,\\
+\label{eq:OmegaL}
+\frac{\dd \boldsymbol{L}}{\dd t} &= \frac{1}{2 r^3 }\Bigg\{  \left[ 4+3q  - \frac{3 (1+q)^2}{\sqrt{r /M}}  \left( k_1 \boldsymbol{S}_1+\frac{\boldsymbol{S}_2}{q} \right) \!\cdot\! \frac{\hat{\boldsymbol{L}}}{M^2}\right] \! \boldsymbol{S}_1+ \left[ 4+\frac{3}{q}   - \frac{3 (1+q)^2}{q\sqrt{r / M}}  \left( \boldsymbol{S}_1+ k_2 \frac{\boldsymbol{S}_2}{q} \right) \!\cdot\! \frac{\hat{\boldsymbol{L}}}{M^2} \right] \! \boldsymbol{S}_2\Bigg\} \times \boldsymbol{L} +\frac{\dd L}{\dd t}\hat{\boldsymbol{L}},
+\end{align}
+where ${\dd L}/{\dd t}$ encodes momentum dissipation via GWs.
+Since each of the angular momentum vectors considered is defined by 3 components ( e.g. $\vec{S}_1=(S_{1,x}, S_{1,y}, S_{1,z} )$, solving their evolution means to integrate 9 differential equations. The dimensionality of the problem can be reduce paraemtrizing the angular momentum evolution through the following parameters
+\begin{align}
+\chi_{\rm eff} &\equiv\frac{(1+q)}{M^2}  \left(  \boldsymbol{S}_1  \cdot \hat{\boldsymbol{L}} +\frac{\boldsymbol{S}_2  \cdot \hat{\boldsymbol{L}} }{q} \right)=  \frac{\chi_1 \cos\theta_1 + q \chi_2\cos\theta_2}{1+q}\,,
+\end{align}
+\begin{align}
+\delta \chi &\equiv \frac{(1+q)}{M^2}  \left(  \boldsymbol{S}_1  \cdot \hat{\boldsymbol{L}} -\frac{\boldsymbol{S}_2  \cdot \hat{\boldsymbol{L}} }{q} \right)=  \frac{\chi_1 \cos\theta_1 - q \chi_2\cos\theta_2}{1+q}\,.
+\end{align}
+Therefore the system of Eqs.~\eqref{eq:spinomega1}-\eqref{eq:OmegaL} can be reduce to a system of two equasiotns: 
+\begin{align}\label{chieffdevNS}
+M\frac{\dd  \chi_{\rm eff} }{\dd t}&=\frac{3}{4} \left(\frac{M}{r}\right)^{7/2} \frac{q \chi_1 \chi_2 }{(1+q)^2}\left[ \chi_{\rm eff} (k_1-k_2)+\delta \chi (k_1+k_2-2)\right] \hat{\boldsymbol{L}} \cdot (\hat{\vec{S}}_1 \times \hat{\vec{S}}_2 )\\\label{deltachidevNS}
+M\frac{\dd \delta \chi }{\dd t}&=-\frac{3}{4} \frac{M^3}{r^{7/2}} \frac{q \chi_1 \chi_2 }{(1+q)^2}\left\{-4 \sqrt{r} +\sqrt{M}\left[ \chi_{\rm eff} (2+k_1+k_2)+\delta \chi (k_1-k_2)\right]\right\}\hat{\boldsymbol{L}} \cdot (\hat{\vec{S}}_1 \times \hat{\vec{S}}_2 )
+ \end{align}
+In the BH case ($k_1=k_2=1$) we have that these reduce to
+\begin{align}\label{chieffdevBH}
+M \frac{\dd \chi_{\rm eff}}{\dd t}& = 0,\\
+\label{deltachidevBH}
+M \frac{\dd \delta\chi}{\dd t}&=\frac{3q}{(1+q)^2} \chi_1 \chi_2 \left(\frac{M}{r}\right)^3 \left(1-\frac{\chi_{\rm eff}}{\sqrt{r/M}}\right) \hat{\boldsymbol{L}} \cdot (\hat{\vec{S}}_1 \times \hat{\vec{S}}_2 )
+\end{align}
+Being the first one exactly equal to zero, the spin dynamics can be fully parameterized and studied using Eq.~\ref{deltachidevBH} alone, as shown in Ref.~\cite{2023PhRvD.108b4042G}. Specifically, the right-hand side of Eq.~\ref{deltachidevBH} is a third-order polynomial function and can be integrated analytically.  
+In the NS case, both the time derivative of $\chi_{\rm eff}$ and $\delta \chi$ need to be considered. Written as a coupled system, the rhs of these equations are polynomial functions. To make it explicitly we can write $\hat{\boldsymbol{L}} \cdot (\vec{S}_1 \times \vec{S}_2 )=[1- \cos \theta_1-\cos \theta_2- \cos \theta_{12}+ 2 \cos \theta_1 \cos \theta_2 \cos \theta_{12}]^{1/2}$  using the definition for these elements as the one in Ref.~\cite{2023PhRvD.108b4042G}
+\begin{align}\label{polypart}
+\hat{\boldsymbol{L}} \cdot (\vec{S}_1 \times \vec{S}_2)= \frac{\sign \Delta \Phi}{2 q^2 \chi_1 \chi_2} \sqrt{\sum_{ i=0}^{3} \sum_{ j=0}^{3}  \mathcal{S}_{i,j} \chi_{\rm eff}^{i}  \delta \chi^{j}}
+\end{align}
+with 
+\begin{align}
+  \mathcal{S}_{00}&=-\frac{4 k^2 q^2 (q+1)^4 r}{M^5}+\frac{4 k q (q+1)^2 \sqrt{r} \left(q^4\chi_2^2+\chi_1^2\right)}{M^{5/2}}-\left(\chi_1^2-q^4\chi_2^2\right)^2\\
+     \mathcal{S}_{01}&=\frac{2 q \left(q^2-1\right) \sqrt{r} \left[M^{5/2} \left(q^4 \chi_2^2+\chi_2^2\right)-2 k q (q+1)^2 \sqrt{r}\right]}{M^3}\\
+      \mathcal{S}_{02}&=\frac{q (q+1)^2 \left\{M^{3/2} (q-1) \left[M (q^3 \chi_2^2- \chi_2^2)-q r(q-1)\right]-2 k q (q+1)^2 \sqrt{r}\right\}}{M^{5/2}}\\
+     \mathcal{S}_{03}&= -\frac{(q-1) q^2 (q+1)^3 \sqrt{r}}{\sqrt{M}}\\
+      \mathcal{S}_{10}&= \frac{4 k q^2 (q+1)^4 r-2 M^{5/2} q (q+1)^2 \sqrt{r} \left(q^4 \chi_2^2+\chi_2^2\right)}{M^3}\\
+           \mathcal{S}_{11}&= \frac{2 q^2 (q+1)^2 \left[M \left(\chi_2^2-q^2 \chi_2^2\right)+\left(q^2-1\right) r\right]}{M}\\
+                 \mathcal{S}_{12}&=\frac{q^2 (q+1)^4 \sqrt{r}}{\sqrt{M}}\\
+      \mathcal{S}_{13}&=0\\
+         \mathcal{S}_{20}&=-\frac{q (q+1)^3 \left\{M^{3/2} \left[ M( q^3 \chi_2^2+ \chi_2^2)+q r(1+q)\right]-2 k q (q+1) \sqrt{r}\right\}}{M^{5/2}}\\
+      \mathcal{S}_{21}&=     \frac{(q-1) q^2 (q+1)^3 \sqrt{r}}{\sqrt{M}}\\
+       \mathcal{S}_{22}&=  0\\
+          \mathcal{S}_{23}&=  0\\
+           \mathcal{S}_{30}&=  -\frac{q^2 (q+1)^4 \sqrt{r}}{\sqrt{M}}\\  
+               \mathcal{S}_{31}&= 0\\
+                   \mathcal{S}_{32}&= 0\\
+                       \mathcal{S}_{33}&= 0
+\end{align}
+Here $\kappa$ is the asymptotic angular momentum defined in Ref.~\cite{2023PhRvD.108b4042G}. It is important to notice that this term is present both in the NS and in the BH case. All information about the nature of the object is in the prefactor. 
+
+
+Working with polynomial functions is good now, but solving coupled systems of equations is not. The main reason is that both $\chi_{\rm eff}$ and $\delta \chi$ evolve on the precessional timescale, and it is more expensive to evolve two complicated equations (that are not analytical anymore) than just one. Moreover In the BH case, the time derivative of $\delta \chi$  is used to define the precession timescale. In the NS case, we have two quantities (they seem to oscillate with the same period, but I was not able to formally prove it), and so it is not clear which one we should use. 
+
+
+\subsection {$\chi_{\rm cons}$}
+
+Let us now look for an equivalent constant of motion for the generic problem with $k_1, k_2 \neq 1$. For simplicity, we restrict ourselves to sufficiently short timescales $t\sim |\dd \hat{\boldsymbol{L}}/\dd t|^{-1}\ll L |\dd L/ \dd t|^{-1}$, see below for a discussion on this point. This is equivalent to neglecting radiation reaction, i.e., assuming $\dd L/ \dd t= 0$ in Eq.~(\ref{eq:OmegaL}).
+ A tedious but nonetheless straightforward calculation yields 
+\begin{align}
+\label{terminround}
+\frac{\dd}{\dd t} \left( \chi_{\rm eff}-\frac{\chi_{\rm eff}^2+\chi_{\rm quad}^2}{2 \sqrt{r/M}}\right) =0,
+\end{align}
+where 
+\begin{align}\label{chiquad}
+\chi_{\rm quad}^2 & \equiv \frac{1}{M^2} \left[ (k_1-1)\left(\frac{\boldsymbol{S}_1  \cdot \hat{\boldsymbol{L}} }{m_1} \right)^2 +(k_2-1)\left(\frac{\boldsymbol{S}_2  \cdot \hat{\boldsymbol{L}} }{m_2}\right)^2 \right]=   \frac{{(k_1 -1) (\chi_1\cos\theta_1)^2 + (k_2 -1) (q \chi_2\cos\theta_2)^2 }}{(1+q)^2}\,.
+\end{align}
+Any function of the term in round brackets in Eq.~(\ref{terminround}) is a constant of motion under  Eqs.~(\ref{eq:spinomega1})–(\ref{eq:OmegaL}) with $\dd L/\dd t = 0$. To identify this function, we further require that the resulting constant of motion, $\chi_{\rm cons}$, reduces to $\chi_{\rm eff}$ in both the BH limit ($\kappa_{1,2} \to 1$) and the Newtonian limit ($r \to \infty$). This ensures that $\chi_{\rm cons}$ can be meaningfully interpreted as a generalization of the effective spin $\chi_{\rm eff}$ to the non-BH case.
+
+The solution is 
+\begin{align}
+\label{chicons}
+\chi_{\rm cons} =  \frac{\displaystyle 
+2 \left( \chi_{\rm eff}-\frac{\chi_{\rm eff}^2+\chi_{\rm quad}^2}{2 \sqrt{r/M}}\right)}
+{\displaystyle 1+ \sqrt{1- \frac{2}{\sqrt{r/M}}\left( {\chi_{\rm eff}-\frac{\chi_{\rm eff}^2+\chi_{\rm quad}^2}{2
+   \sqrt{r/M}}}\right)}}\,.
+\end{align}
+In particular, one has
+\begin{align}
+\displaystyle \lim_{\chi_{\rm quad}^2 \to  0}\chi_{\rm cons} &= \chi_{\rm eff} - \frac{\chi_{\rm quad}^2}{2\left(\sqrt{r/M} - \chi_{\rm eff}\right) } + \mathcal{O}(\chi_{\rm quad}^4)\,,
+\\
+\displaystyle \lim_{r\to  \infty}\chi_{\rm cons} &= \chi_{\rm eff} - \frac{\chi_{\rm quad}^2}{2 \sqrt{r/M}} + \mathcal{O}(r/M)\,, 
+\end{align}
+where  the limit $\chi_{\rm quad}^2 \to  0$ is obtained setting  $k_1=k_2=1$.
+The parameter $\chi_{\rm cons}$ in Eq.~(\ref{chicons}) is a conserved quantity for the generic spin-precession problem involving non-BH objects and reduces to the known effective spin in the appropriate limits.  Equation~(\ref{chicons}) is valid under the condition 
+\begin{align} \label{chiconscondition}
+\chi_{\rm quad}^2> - \left(\sqrt{r/M} - \chi_{\rm eff}\right)^2\,,
+\end{align}
+ which includes all realistic cases where $k_{\rm 1,2}>1$. Exotic compact objects with large and negative spin-induced quadrupole coefficients $k$ would require a different modeling approach. 
+ \subsection {NS spin precession can be described with a single equation}
+The set of 9 differential equations (Eqs. ~\eqref{eq:spinomega1}-\eqref{eq:OmegaL}) can reduce to two using $\chieff$ and $\deltachi$. Using $\chicons$ can be reduced to a singel equations like in the BH case.
+To do that, we express $\cos \theta_1$, $\cos \theta_2$, $\cos \theta_{12}$ using the definitions of $\deltachi$ and $\chicons$ (see Mathematica notebook with explicit calculations) and plug them in Eq.~\eqref{polypart}, which then enter in Eq.~\eqref{deltachidevNS}. In this way, the rhs of the time derivative of  $\deltachi$ became long and non-polynomia.
+However, with a single equation, the NS case can be treated exactly like the BH case! The only difference is that $\deltachi$ evolution is not analytical anymore.
+The resulting expression is the following 
+\begin{align}\label{ddeltachidtexp}
+\left(\frac{\dd \deltachi}{\dd t}\right)^2= \mathcal{A} ^2(1-\cos \theta_1)^2 (1-\cos \theta_2)^2  (1-\cos \Delta \Phi)^2 
+\end{align} 
+where
+
+\begin{align}
+ \mathcal{A} &= \frac{3 M^3 q \chi_1 \chi_2 \sqrt{\delta \chi ^2 M (1-k_1 k_2)-2 \sqrt{M} \sqrt{r} \left[\delta \chi  (k_1-k_2)+\chicons (k_1+k_2+2)\right]+M \chicons^2 (k_1+k_2+2)+4 r}}{2 (1+q)^2 r^{7/2}}
+\end{align} 
+\begin{align}\label{costheta1chicons}
+\cos\theta_{1} &=\frac{(1+q) \left[2 \sqrt{r/M} +(1+k_2) \delta \chi \right] }{{(2+k_1+k_2) \chi_1}} + \notag \\ &
+-\frac{ (1+q) \sqrt{4 r/M+ (1-k_1 k_2) \delta \chi^2+(2-k_1+ k_2) \chicons^2 -2 \sqrt{r} \left[ (k_1-k_2) \delta\chi+(2+k_1+k_2)\chicons \right] }}{(2+k_1+k_2) \chi_1},\\
+\label{costheta2chicons}
+\cos\theta_{2} &=\frac{(1+q) \left[2 \sqrt{r/M} -(1+k_1) \delta \chi \right] }{{(2+k_1+k_2) \chi_2}} + \notag \\ &
+-\frac{ (1+q) \sqrt{4 r/M+ (1-k_1 k_2) \delta \chi^2+(2-k_1+ k_2) \chicons^2 -2 \sqrt{r} \left[ (k_1-k_2) \delta\chi+(2+k_1+k_2)\chicons \right] }}{(2+k_1+k_2) \chi_1}.
+\end{align} 
+while  $\cos \Delta \Phi$ is too complicated to be reported here explicitly (see Mathematica notebook for that), and we write just its definition
+\begin{align}
+\cos \Delta \Phi&=\frac{2 k q (q+1)^2 \sqrt{r}-M^2 \left[2  q \chi_1 \cos \theta_1  \left( q \chi_2 \sqrt{M} \cos \theta_2+\sqrt{r}\right)+2  q^3  \chi_2 \sqrt{r} \cos \theta_2+\sqrt{M} \left(q^4 \chi_2^2+\chi_1^2\right)\right]}{2 M^{5/2} q^2 \chi_1 \chi_2 \sin \theta_1 \sin \theta_2 }
+\end{align} 
+where $\cos\theta_{1} $ and $\cos\theta_{2} $ are given in Eqs. \eqref{costheta1chicons} and \eqref{costheta2chicons} .
+Due to the presence of a lot of nested roots, the RHS of Eq.~\eqref{ddeltachidtexp} is sadly not a polynomial function of $\deltachi$ anymore.
+\section{The problem}
+
+The evolution of the spin direction in the BH binary case can be carried out very quickly along the all inspiral due to the fact that the dynamics happen on three well-separated timescales that respect a precise hierarchy: $\tau_{\rm orb} \ll \tau_{\rm pre} \ll \tau_{\rm GW}$. Therefore, equations of motion can be first orbit averaged, then precession averaged, and finally evolved on the $ \tau_{\rm GW}$. The latter timescale allows for very large integration time step ensurign a very quick numerical integration. 
+In other words, it is just necessary to consider quantities that evolve during the inspiral (such as the asymptotic angular momentum), and both orbit- and precession-average their evolution equations at each step of the evolution. 
+
+Performing an orbit average of a quantity or function $X$ is easy and corresponds to performing the following operation
+\begin{align}
+\langle X \rangle = \frac{1}{\tau_{\rm orb}} \int_0^{\tau_{\rm orb}} X(t)  \dd t,
+\end{align}
+where $\tau_{\rm orb}$ is known at every  orbital separation $r$ and it is defined as
+\begin{align}\label{torb}
+\tau_{\rm orb} =2 \pi \sqrt{\frac{r^3}{M}} 
+\end{align}
+Performing the precession average instead means carrying out the following integral
+\begin{align}\label{precession average}
+\langle X \rangle =\frac{\int_{\delta\chi_-}^{\delta\chi_+} X(\deltachi)\left(\frac{\dd \deltachi }{\dd t}\right)^{-1} \dd \deltachi}{\int_{\delta\chi_-}^{\delta\chi_+} \left(\frac{\dd \deltachi }{\dd t}\right)^{-1} \dd \deltachi}
+\end{align}
+where $\delta\chi_+$ and $\delta\chi_-$ are the maximum an minimum between which $\deltachi$ oscillates during a precessional cycle. While the denomiator correspond to half of
+\begin{align}\label{tprec}
+\tau_{\rm prec} =2 \int_{\delta\chi_-}^{\delta\chi_+} \left(\frac{\dd \deltachi }{\dd t}\right)^{-1} \dd \deltachi
+\end{align}
+
+Therefore, in order to implement precision average of anything is necessary to first of all define the extreme of integrations, i.e., $\delta\chi_+$ and $\delta\chi_-$. These two quantities can be found by searching the zeros of the RHS of Eq.~\ref{ddeltachidtexp}.
+Finding the roots, measuring the $\tau_{\rm prec}$, and in general precession avaregin are operations that during the evolution of a binary system are performed a very large number of times. This means that we must be able to do all these things in the most efficient and accurate way possible.
+
+In the BH case, this operation is very easy since the RHS is a polynomial that admits at most 3 roots (it is possible to prove that the smaller two are the correct ones), and $\tau_{\rm prec}$ is analytical.
+
+In the NS case, all of this is lost: the RHS is not a polynomial, admits a larger number of roots. In some cases, the problem admits 4 roots that are all real, physical, and define two separated bounded intervals between which the evolution of the spins can happen, leaving us with the ambiguity to choose the correct one. Moreover, $\tau_{\rm prec}$ is not analytical.
+
+Our very first goal is to be able to: (1) Find all the roots accurately, (2) Understand which ones are real, (3) Compute $\tau_{\rm prec}$, (4) Perform precession average, (5) Do all of this very efficiently.
+
+\subsection{Find all the roots accurately}
+ The very first task is being able to find the roots of the RHS of Eq.~\eqref{ddeltachidtexp}. The latter can be splitted in 4 componets: $\mathcal{A}$, $(1-\cos\theta_1)$, $(1-\cos\theta_2)$ and $(1-\cos\Delta\Phi)$. For each of them, in principle, we can search for which $\deltachi$ makes them zero.
+
+ It is possible to find the roots of $\mathcal{A}$ analitically:
+   \begin{align}
+ \delta\chi_{1}&=\frac{(k_2-k_1) \sqrt{r/M}-\sqrt{ (k_1+k_2+2) \left[r /M(k_1+k_2-2)-2  \sqrt{r/M}  (k_1 k_2-1)\chicons+  (k_1 k_2-1)\chicons^2\right]}}{ k_1 k_2-1}\\
+  \delta\chi_{2}&=\frac{(k_2-k_1)  \sqrt{r/M}+\sqrt{(k_1+k_2+2) \left[r/M (k_1+k_2-2)-2  \sqrt{r/M}  (k_1 k_2-1)\chicons+  (k_1 k_2-1)\chicons^2\right]}}{ k_1 k_2-1}\\
+ \end{align}
+By evaluating these in a small separation limit, it is possible to see that (at least for $ \delta\chi_{1}$) they are physical. This, however, needs to be checked numerically!
+
+Regarding $(1 - \cos\theta_1)$, $(1 - \cos\theta_2)$, and $(1 - \cos\Delta\Phi)$, closed-form expressions for their zeros cannot be obtained analytically. The first two depend on the parameters ${q, M, \chi_1, \chi_2, k_1, k_2, r, \delta\chi, \chicons}$, while the latter additionally depends on $\kappa$. The allowed range of $\kappa$ and its impact on the solutions should be specified!
+\section{Inspiral}
+
+
+ The main quantities that vary only on the radiation-reaction timescale are: $u$ ( or equivalently $r$, $L$), $\kappa$, and $\chicons$. 
+ It is useful to express the evolution of $\kappa$ and $\chicons$ as a function of $u$ and, to speed up the integration, to precession average their expressions. 
+ 
+ \begin{align}\label{dkdu}
+ \frac{\dd \kappa}{\dd u} =  \langle S^2 \rangle
+ \end{align}
+ where
+  \begin{align}\label{S2}
+ S^2=\frac{M^2}{ u}\left[\frac{\kappa}{M^2}-\frac{(1+q)}{M^{3/2}q u (2+k_1+k_2)}-\frac{1+k_2-k_1(1+q)}
+{(1+q)(2+k_1+k_2)}
+\, \delta\chi+ \frac{\sqrt{\mathcal{C}}}{M qu (2+k_1+k_2)}\right] 
+ \end{align}
+ and
+% \begin{align}
+%S^2=\frac{M^2}{u}\Bigg[& \frac{\kappa}{M^2} -\frac{1+q}{M^{3/2} q u (2+k_1+k_2)}\\[0.3em]&-\frac{1+k_2-k_1(1+q)}
+%{(1+q)(2+k_1+k_2)}\,\delta\chi\\[0.3em]&+\frac{\sqrt{\mathcal{C}}}{2 M q u (2+k_1+k_2)}\Bigg].
+%\end{align}
+\begin{align}
+\mathcal{C} = 1 + q \Bigg\{&(q+1)^2 (q+4)+\\ &-(q+1)^2 M^{3/2} u \left[\chi_{\rm cons}(k_1+k_2+2)
++\delta\chi (k_1-k_2)\right]+\\ &+ q M^3 u^2\left[\chi_{\rm cons}^2 (k_1+k_2+2)+\delta\chi^2 (1-k_1k_2)\right]\Bigg\}.
+\end{align}
+The $\langle \cdot \rangle$. parentesis on RHS of equation~\ref{dkdu} indicate that $S^2$ has to be precession avareged (see Eq.~\ref{recession average}.). In order to compute $\kappa$ as a function of $u$, we need to integrate its ODE and apply precession average at every step, meaning finding the roots at any step and measuring $\tau_{\rm pre}$ at every step, which is very expensive compared to the analytical BH case.
+
+An important thing can be observed from Eq.~\ref{S2} due to the presence of $\deltachi$ and $\chicons$, $S^2$ is never constant (not even for $q=1$ as in the BH case).
+Moreover, we need to remember that $\chicons$, as $\kappa$,  is not constant on the radiation reaction timescale, so we need a derivative also for that.
+
+\begin{align}
+\frac{\dd \kappa}{\dd u}&=- \frac{(1+q)^2 \left\{ 2+ q\left[ 4+2 q+  u (k_2-k_1)\deltachi - u (2+k_1+k_2) \chicons \right] \right\}}{u^2 q (2+k_1+k_2)  \left[ (1+q)^2-2 q u \chicons \right]} + \notag \\ &
+- \frac{(1+q)^2 \left\{ 2 \sqrt{(1+q)^4 +  q^2 u^2 [ \delta \chi ^2 (1-k_1 k_2)+\chicons^2 (2+k_1+k_2)] - q (1+q)^2 u [\delta \chi  (k_1-k_2)+\chicons (2+k_1+k_2) ]}\right\}}{u^2 q (2+k_1+k_2)  \left[ (1+q)^2-2 q u \chicons \right]}
+\end{align}
+ The RHS of this equation has to be precession-averaged too.
+ 
+\acknowledgements
+
+We thank people and grants.
+
+\bibliography{ShortNotes}
+
+
+
+\end{document}
+
+
+
+
+%%%%%%%%% spin precession equaitons generic
+
+
+\begin{align}
+\label{eq:spinomega1}
+\frac{\dd \boldsymbol{S}_1}{\dd t} &= \frac{1}{2 r^3} \Bigg\{ \left[ 4+3q  - \frac{3 (1+q)^2}{\sqrt{r /M}}  \left( k_1 \boldsymbol{S}_1+\frac{\boldsymbol{S}_2}{q} \right)\!\cdot\!\frac{\hat{\boldsymbol{L}}}{M^2}\right] \! \boldsymbol{L} \notag \\
+&+ \boldsymbol{S}_2\Bigg\}  \times \boldsymbol{S}_1,
+\\
+\label{eq:spinomega2}
+\frac{\dd \boldsymbol{S}_2}{\dd t}  &= \frac{1}{2 r^3}\Bigg\{ \left[ 4+\frac{3}{q}  - \frac{3 (1+q)^2}{q\sqrt{r / M}}  \left( \boldsymbol{S}_1+ k_2 \frac{\boldsymbol{S}_2}{q} \right) \!\cdot\! \frac{\hat{\boldsymbol{L}}}{M^2}  \right]\! \boldsymbol{L} 
+\notag \\ &+ \boldsymbol{S}_1\Bigg\} \times \boldsymbol{S}_2,
+\\
+\label{eq:OmegaL}
+\frac{\dd \boldsymbol{L}}{\dd t} &= \frac{1}{2 r^3 }\Bigg\{  \left[ 4+3q  - \frac{3 (1+q)^2}{\sqrt{r /M}}  \left( k_1 \boldsymbol{S}_1+\frac{\boldsymbol{S}_2}{q} \right) \!\cdot\! \frac{\hat{\boldsymbol{L}}}{M^2}\right] \! \boldsymbol{S}_1
+\notag\\
+&+ \left[ 4+\frac{3}{q}   - \frac{3 (1+q)^2}{q\sqrt{r / M}}  \left( \boldsymbol{S}_1+ k_2 \frac{\boldsymbol{S}_2}{q} \right) \!\cdot\! \frac{\hat{\boldsymbol{L}}}{M^2} \right] \! \boldsymbol{S}_2\Bigg\}
+\notag\\ & \times \boldsymbol{L} +\frac{\dd L}{\dd t}\hat{\boldsymbol{L}},
+\end{align}
+
+
+%%%%%%%%%%%%%%%%% deltachi and chieff derivative NS first BH second 
+
+
+\begin{align}\label{chieffdevNS}
+M\frac{\dd  \chi_{\rm eff} }{\dd t}&=\frac{3}{4} \left(\frac{M}{r}\right)^{7/2} \frac{q \chi_1 \chi_2 }{(1+q)^2}\left[ \chi_{\rm eff} (k_1-k_2)+\delta \chi (k_1+ \right. \notag \\
+& \left. +k_2-2)\right] \hat{\boldsymbol{L}} \cdot (\vec{S}_1 \times \vec{S}_2 )\\\label{deltachidevNS}
+M\frac{\dd \delta \chi }{\dd t}&=-\frac{3}{4} \frac{M^3}{r^{7/2}} \frac{q \chi_1 \chi_2 }{(1+q)^2}\left\{-4 \sqrt{r} +\sqrt{M}\left[ \chi_{\rm eff} (2+k_1+ \right. \right. \notag \\
+& \left. \left. +k_2)+\delta \chi (k_1-k_2)\right]\right\}\hat{\boldsymbol{L}} \cdot (\vec{S}_1 \times \vec{S}_2 )
+ \end{align}\
+ 
+ 
+ 
+ 
+ \begin{align}\label{chieffdevBH}
+\frac{\dd \chi_{\rm eff}}{\dd t}& = 0,\\
+\label{deltachidevBH}
+\frac{\dd \delta\chi}{\dd t}&=\frac{3q}{(1+q)^2} \chi_1 \chi_2 \left(\frac{r}{M}\right)^{-3} \left(1-\frac{\chi_{\rm eff}}{\sqrt{r/M}}\right)\notag\\
+&\times \hat{\boldsymbol{L}} \cdot (\vec{S}_1 \times \vec{S}_2 )
+\end{align}
