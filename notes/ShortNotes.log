@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.8.23)  22 MAY 2026 09:24
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.8.23)  3 JUN 2026 14:13
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -983,7 +983,7 @@ LaTeX Warning: Reference `recession average' on page 6 undefined on input line
 271.
 
 
-Overfull \hbox (8.72716pt too wide) detected at line 279
+Overfull \hbox (24.84895pt too wide) detected at line 279
 []
  []
 
@@ -999,19 +999,20 @@ Use acknowledgments instead.
 
 Package natbib Warning: There were undefined citations.
 
-[6] (./ShortNotes.aux)
+[6{/usr/local/texlive/2023/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc
+}] (./ShortNotes.aux)
 
 LaTeX Warning: There were undefined references.
 
 Package rerunfilecheck Info: File `ShortNotes.out' has not changed.
-(rerunfilecheck)             Checksum: 70F41E027F72A97AA2B99D6731847786;1407.
+(rerunfilecheck)             Checksum: D5A98EBB008697A6C7E7E030BF4AE2D3;1491.
  ) 
 Here is how much of TeX's memory you used:
- 27031 strings out of 476025
- 490177 string characters out of 5790017
+ 27044 strings out of 476025
+ 490367 string characters out of 5790017
  1896388 words of memory out of 5000000
- 46808 multiletter control sequences out of 15000+600000
- 533985 words of font info for 151 fonts, out of 8000000 for 9000
+ 46814 multiletter control sequences out of 15000+600000
+ 534404 words of font info for 154 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  99i,16n,94p,1007b,738s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
@@ -1037,10 +1038,10 @@ st/fonts/type1/public/cm-super/sfrm0800.pfb></usr/local/texlive/2023/texmf-dist
 /fonts/type1/public/cm-super/sfrm0900.pfb></usr/local/texlive/2023/texmf-dist/f
 onts/type1/public/cm-super/sfrm1000.pfb></usr/local/texlive/2023/texmf-dist/fon
 ts/type1/public/cm-super/sfti0900.pfb>
-Output written on ShortNotes.pdf (6 pages, 350408 bytes).
+Output written on ShortNotes.pdf (6 pages, 353172 bytes).
 PDF statistics:
- 286 PDF objects out of 1000 (max. 8388607)
- 228 compressed objects within 3 object streams
- 69 named destinations out of 1000 (max. 500000)
- 43101 words of extra memory for PDF output out of 51595 (max. 10000000)
+ 294 PDF objects out of 1000 (max. 8388607)
+ 235 compressed objects within 3 object streams
+ 70 named destinations out of 1000 (max. 500000)
+ 45157 words of extra memory for PDF output out of 51595 (max. 10000000)
 

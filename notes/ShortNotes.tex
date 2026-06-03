@@ -182,7 +182,7 @@ To do that, we express $\cos \theta_1$, $\cos \theta_2$, $\cos \theta_{12}$ usin
 However, with a single equation, the NS case can be treated exactly like the BH case! The only difference is that $\deltachi$ evolution is not analytical anymore.
 The resulting expression is the following 
 \begin{align}\label{ddeltachidtexp}
-\left(\frac{\dd \deltachi}{\dd t}\right)^2= \mathcal{A} ^2(1-\cos \theta_1)^2 (1-\cos \theta_2)^2  (1-\cos \Delta \Phi)^2 
+\left(\frac{\dd \deltachi}{\dd t}\right)^2= \mathcal{A} ^2(1-\cos^2 \theta_1) (1-\cos ^2\theta_2)  (1-\cos^2 \Delta \Phi)
 \end{align} 
 where
 
@@ -193,8 +193,8 @@ where
 \cos\theta_{1} &=\frac{(1+q) \left[2 \sqrt{r/M} +(1+k_2) \delta \chi \right] }{{(2+k_1+k_2) \chi_1}} + \notag \\ &
 -\frac{ (1+q) \sqrt{4 r/M+ (1-k_1 k_2) \delta \chi^2+(2-k_1+ k_2) \chicons^2 -2 \sqrt{r} \left[ (k_1-k_2) \delta\chi+(2+k_1+k_2)\chicons \right] }}{(2+k_1+k_2) \chi_1},\\
 \label{costheta2chicons}
-\cos\theta_{2} &=\frac{(1+q) \left[2 \sqrt{r/M} -(1+k_1) \delta \chi \right] }{{(2+k_1+k_2) \chi_2}} + \notag \\ &
--\frac{ (1+q) \sqrt{4 r/M+ (1-k_1 k_2) \delta \chi^2+(2-k_1+ k_2) \chicons^2 -2 \sqrt{r} \left[ (k_1-k_2) \delta\chi+(2+k_1+k_2)\chicons \right] }}{(2+k_1+k_2) \chi_1}.
+\cos\theta_{2} &=\frac{(1+q) \left[2 \sqrt{r/M} -(1+k_1) \delta \chi \right] }{{q (2+k_1+k_2) \chi_2}} + \notag \\ &
+-\frac{ (1+q) \sqrt{4 r/M+ (1+k_1 k_2) \delta \chi^2+(2+k_1+ k_2) \chicons^2 -2 \sqrt{r} \left[ (k_1-k_2) \delta\chi+(2+k_1+k_2)\chicons \right] }}{ q (2+k_1+k_2) \chi_2}.
 \end{align} 
 while  $\cos \Delta \Phi$ is too complicated to be reported here explicitly (see Mathematica notebook for that), and we write just its definition
 \begin{align}
@@ -271,14 +271,26 @@ Regarding $(1 - \cos\theta_1)$, $(1 - \cos\theta_2)$, and $(1 - \cos\Delta\Phi)$
 The $\langle \cdot \rangle$. parentesis on RHS of equation~\ref{dkdu} indicate that $S^2$ has to be precession avareged (see Eq.~\ref{recession average}.). In order to compute $\kappa$ as a function of $u$, we need to integrate its ODE and apply precession average at every step, meaning finding the roots at any step and measuring $\tau_{\rm pre}$ at every step, which is very expensive compared to the analytical BH case.
 
 An important thing can be observed from Eq.~\ref{S2} due to the presence of $\deltachi$ and $\chicons$, $S^2$ is never constant (not even for $q=1$ as in the BH case).
-Moreover, we need to remember that $\chicons$, as $\kappa$,  is not constant on the radiation reaction timescale, so we need a derivative also for that.
+Moreover, we need to remember that $\chicons$, as $\kappa$,  is not constant on the radiation reaction timescale, so we need a derivative also for that.`
 
 \begin{align}
-\frac{\dd \kappa}{\dd u}&=- \frac{(1+q)^2 \left\{ 2+ q\left[ 4+2 q+  u (k_2-k_1)\deltachi - u (2+k_1+k_2) \chicons \right] \right\}}{u^2 q (2+k_1+k_2)  \left[ (1+q)^2-2 q u \chicons \right]} + \notag \\ &
+\frac{\dd \chicons}{\dd u}&=- \frac{(1+q)^2 \left\{ 2+ q\left[ 4+2 q+  u (k_2-k_1)\deltachi - u (2+k_1+k_2) \chicons \right] \right\}}{u^2 q (2+k_1+k_2)  \left[ (1+q)^2-2 q u \chicons \right]} + \notag \\ &
 - \frac{(1+q)^2 \left\{ 2 \sqrt{(1+q)^4 +  q^2 u^2 [ \delta \chi ^2 (1-k_1 k_2)+\chicons^2 (2+k_1+k_2)] - q (1+q)^2 u [\delta \chi  (k_1-k_2)+\chicons (2+k_1+k_2) ]}\right\}}{u^2 q (2+k_1+k_2)  \left[ (1+q)^2-2 q u \chicons \right]}
 \end{align}
  The RHS of this equation has to be precession-averaged too.
+
+
  
+ \section{To do}
+ 
+\begin{itemize}
+ \item Understand where the roots are coming from. Is $\mathcal{A}$ contributing a lot?
+  \item Understand the number of roots (even or odd) using the $\deltachi \to \infty$ limit.
+   \item Same PN comparison orb and prec av.
+    \item Check suspicious value of precession timescale for bifurcation system.
+ \item $\chicons=\chicons^{UD}$ expansion (?). Check the validity of the conspiracy theory.
+\end{itemize}
+
 \acknowledgements
 
 We thank people and grants.
