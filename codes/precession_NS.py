@@ -700,6 +700,62 @@ def eval_lambda_from_mass(mass, eos):
 
 ##@jit(nopython=True, cache=True)
 #@njit(fastmath=True)
+
+
+def pre_2(deltachi,  r,  chicons,  q, chi1, chi2, k1,k2):
+    return 9/4 * (q)**(2) * ((1 + q))**(-4) * (r)**(-7) * (chi1)**(2) * \
+    (chi2)**(2) * (4 * r + ((1 + -1 * k1 * k2) * (deltachi)**(2) + ((2 + \
+    (k1 + k2)) * (chicons)**(2) + -2 * (r)**(1/2) * ((k1 + -1 * k2) * \
+    deltachi + (2 + (k1 + k2)) * chicons))))
+ 
+
+
+def  sin1_2(deltachi, r,  chicons,  q, chi1, k1,k2):
+    return (1 + -1 * ((2 + (k1 + k2)))**(-2) * ((1 + q))**(2) * (chi1)**(-2) * \
+    ((2 * (r)**(1/2) + (deltachi + (k2 * deltachi + -1 * ((4 * r + ((1 + \
+    -1 * k1 * k2) * (deltachi)**(2) + ((2 + (k1 + k2)) * (chicons)**(2) + \
+    -2 * (r)**(1/2) * ((k1 + -1 * k2) * deltachi + (2 + (k1 + k2)) * \
+    chicons)))))**(1/2)))))**(2))
+
+def  sin2_2(deltachi, r,  chicons,  q, chi2, k1,k2):
+    return (1 + -1 * ((2 + (k1 + k2)))**(-2) * (q)**(-2) * ((1 + q))**(2) * \
+    (chi2)**(-2) * ((-2 * (r)**(1/2) + (deltachi + (k1 * deltachi + ((4 * \
+    r + ((1 + -1 * k1 * k2) * (deltachi)**(2) + ((2 + (k1 + k2)) * \
+    (chicons)**(2) + -2 * (r)**(1/2) * ((k1 + -1 * k2) * deltachi + (2 + \
+    (k1 + k2)) * chicons)))))**(1/2)))))**(2))
+def sinDeltaPhi_2(deltachi,  r,k,  chicons,  q, chi1, chi2, k1,k2):
+        return (1 + -1/16 * ((2 + (k1 + k2)))**(4) * (q)**(-2) * ((((2 + (k1 + \
+        k2)))**(2) * (chi1)**(2) + -1 * ((1 + q))**(2) * ((2 * (r)**(1/2) + \
+        (deltachi + (k2 * deltachi + -1 * ((4 * r + ((1 + -1 * k1 * k2) * \
+        (deltachi)**(2) + ((2 + (k1 + k2)) * (chicons)**(2) + -2 * (r)**(1/2) \
+        * ((k1 + -1 * k2) * deltachi + (2 + (k1 + k2)) * \
+        chicons)))))**(1/2)))))**(2)))**(-1) * ((((2 + (k1 + k2)))**(2) * \
+        (q)**(2) * (chi2)**(2) + -1 * ((1 + q))**(2) * ((-2 * (r)**(1/2) + \
+        (deltachi + (k1 * deltachi + ((4 * r + ((1 + -1 * k1 * k2) * \
+        (deltachi)**(2) + ((2 + (k1 + k2)) * (chicons)**(2) + -2 * (r)**(1/2) \
+        * ((k1 + -1 * k2) * deltachi + (2 + (k1 + k2)) * \
+        chicons)))))**(1/2)))))**(2)))**(-1) * ((-2 * ((chi1)**(2) + (q)**(4) \
+        * (chi2)**(2)) + (4 * ((2 + (k1 + k2)))**(-1) * q * (1 + q) * \
+        (r)**(1/2) * (k * (2 + (k1 + k2)) * (1 + q) + (-2 * (1 + q) * \
+        (r)**(1/2) + ((-1 + (-1 * k2 + (q + k1 * q))) * deltachi + (((4 * r + \
+        ((1 + -1 * k1 * k2) * (deltachi)**(2) + ((2 + (k1 + k2)) * \
+        (chicons)**(2) + -2 * (r)**(1/2) * ((k1 + -1 * k2) * deltachi + (2 + \
+        (k1 + k2)) * chicons)))))**(1/2) + q * ((4 * r + ((1 + -1 * k1 * k2) \
+        * (deltachi)**(2) + ((2 + (k1 + k2)) * (chicons)**(2) + -2 * \
+        (r)**(1/2) * ((k1 + -1 * k2) * deltachi + (2 + (k1 + k2)) * \
+        chicons)))))**(1/2))))) + 4 * ((2 + (k1 + k2)))**(-2) * q * ((1 + \
+        q))**(2) * (-8 * r + ((k1 + (k2 + 2 * k1 * k2)) * (deltachi)**(2) + \
+        (-1 * (2 + (k1 + k2)) * (chicons)**(2) + (-1 * k1 * deltachi * ((4 * \
+        r + ((1 + -1 * k1 * k2) * (deltachi)**(2) + ((2 + (k1 + k2)) * \
+        (chicons)**(2) + -2 * (r)**(1/2) * ((k1 + -1 * k2) * deltachi + (2 + \
+        (k1 + k2)) * chicons)))))**(1/2) + (k2 * deltachi * ((4 * r + ((1 + \
+        -1 * k1 * k2) * (deltachi)**(2) + ((2 + (k1 + k2)) * (chicons)**(2) + \
+        -2 * (r)**(1/2) * ((k1 + -1 * k2) * deltachi + (2 + (k1 + k2)) * \
+        chicons)))))**(1/2) + 2 * (r)**(1/2) * (2 * (k1 + -1 * k2) * deltachi \
+        + ((2 + (k1 + k2)) * chicons + 2 * ((4 * r + ((1 + -1 * k1 * k2) * \
+        (deltachi)**(2) + ((2 + (k1 + k2)) * (chicons)**(2) + -2 * (r)**(1/2) \
+        * ((k1 + -1 * k2) * deltachi + (2 + (k1 + k2)) * \
+        chicons)))))**(1/2)))))))))))**(2))
 def dchidt2_RHS(deltachi, kappa, r,  chicons,  q, chi1, chi2, k1,k2): 
         #if dchidt
     """
@@ -735,68 +791,113 @@ def dchidt2_RHS(deltachi, kappa, r,  chicons,  q, chi1, chi2, k1,k2):
     --------
     ``dchidt2 = precession.dchidt2_RHS(deltachi, kappa, r, chicons,  q, chi1, chi2, k1,k2)``
     """
+    
+    dchidt2 =(pre_2(deltachi,  r,  chicons,  q, chi1, chi2, k1,k2)*    sin1_2(deltachi, r,  chicons,  q, chi1, k1,k2) * sin2_2(deltachi, r,  chicons,  q, chi2, k1,k2) * sinDeltaPhi_2(deltachi,  r,kappa,  chicons,  q, chi1, chi2, k1,k2))
 
-   # q=np.atleast_1d(q).astype(float)
-    #r= precession.eval_r(u=u,q=q)
-    #
-    pre_2=9/4 * (q)**(2) * ((1 + q))**(-4) * (r)**(-7) * (chi1)**(2) * \
-    (chi2)**(2) * (4 * r + ((1 + -1 * k1 * k2) * (deltachi)**(2) + ((2 + \
-    (k1 + k2)) * (chicons)**(2) + -2 * (r)**(1/2) * ((k1 + -1 * k2) * \
-    deltachi + (2 + (k1 + k2)) * chicons))))
-
-    sin1_2=(1 + -1 * ((2 + (k1 + k2)))**(-2) * ((1 + q))**(2) * (chi1)**(-2) * \
-    ((2 * (r)**(1/2) + (deltachi + (k2 * deltachi + -1 * ((4 * r + ((1 + \
-    -1 * k1 * k2) * (deltachi)**(2) + ((2 + (k1 + k2)) * (chicons)**(2) + \
-    -2 * (r)**(1/2) * ((k1 + -1 * k2) * deltachi + (2 + (k1 + k2)) * \
-    chicons)))))**(1/2)))))**(2))
+    return dchidt2
 
     
-    sin2_2=(1 + -1 * ((2 + (k1 + k2)))**(-2) * (q)**(-2) * ((1 + q))**(2) * \
-    (chi2)**(-2) * ((-2 * (r)**(1/2) + (deltachi + (k1 * deltachi + ((4 * \
-    r + ((1 + -1 * k1 * k2) * (deltachi)**(2) + ((2 + (k1 + k2)) * \
-    (chicons)**(2) + -2 * (r)**(1/2) * ((k1 + -1 * k2) * deltachi + (2 + \
-    (k1 + k2)) * chicons)))))**(1/2)))))**(2))
 
 
-    sinDeltaPhi_2=(1 + -1/16 * ((2 + (k1 + k2)))**(4) * (q)**(-2) * ((((2 + (k1 + \
-    k2)))**(2) * (chi1)**(2) + -1 * ((1 + q))**(2) * ((2 * (r)**(1/2) + \
-    (deltachi + (k2 * deltachi + -1 * ((4 * r + ((1 + -1 * k1 * k2) * \
-    (deltachi)**(2) + ((2 + (k1 + k2)) * (chicons)**(2) + -2 * (r)**(1/2) \
-    * ((k1 + -1 * k2) * deltachi + (2 + (k1 + k2)) * \
-    chicons)))))**(1/2)))))**(2)))**(-1) * ((((2 + (k1 + k2)))**(2) * \
-    (q)**(2) * (chi2)**(2) + -1 * ((1 + q))**(2) * ((-2 * (r)**(1/2) + \
-    (deltachi + (k1 * deltachi + ((4 * r + ((1 + -1 * k1 * k2) * \
-    (deltachi)**(2) + ((2 + (k1 + k2)) * (chicons)**(2) + -2 * (r)**(1/2) \
-    * ((k1 + -1 * k2) * deltachi + (2 + (k1 + k2)) * \
-    chicons)))))**(1/2)))))**(2)))**(-1) * ((-2 * ((chi1)**(2) + (q)**(4) \
-    * (chi2)**(2)) + (4 * ((2 + (k1 + k2)))**(-1) * q * (1 + q) * \
-    (r)**(1/2) * (2 * kappa + (kappa * k1 + (kappa * k2 + (2 * kappa * q + (kappa * k1 * q + \
-    (kappa * k2 * q + (-2 * (r)**(1/2) + (-2 * q * (r)**(1/2) + (-1 * \
-    deltachi + (-1 * k2 * deltachi + (q * deltachi + (k1 * q * deltachi + \
-    (((4 * r + ((1 + -1 * k1 * k2) * (deltachi)**(2) + ((2 + (k1 + k2)) * \
-    (chicons)**(2) + -2 * (r)**(1/2) * ((k1 + -1 * k2) * deltachi + (2 + \
-    (k1 + k2)) * chicons)))))**(1/2) + q * ((4 * r + ((1 + -1 * k1 * k2) \
-    * (deltachi)**(2) + ((2 + (k1 + k2)) * (chicons)**(2) + -2 * \
-    (r)**(1/2) * ((k1 + -1 * k2) * deltachi + (2 + (k1 + k2)) * \
-    chicons)))))**(1/2)))))))))))))) + 4 * ((2 + (k1 + k2)))**(-2) * q * \
-    ((1 + q))**(2) * (-8 * r + (4 * k1 * (r)**(1/2) * deltachi + (-4 * k2 \
-    * (r)**(1/2) * deltachi + (k1 * (deltachi)**(2) + (k2 * \
-    (deltachi)**(2) + (2 * k1 * k2 * (deltachi)**(2) + (4 * (r)**(1/2) * \
-    chicons + (2 * k1 * (r)**(1/2) * chicons + (2 * k2 * (r)**(1/2) * \
-    chicons + (-2 * (chicons)**(2) + (-1 * k1 * (chicons)**(2) + (-1 * k2 \
-    * (chicons)**(2) + (4 * (r)**(1/2) * ((4 * r + ((1 + -1 * k1 * k2) * \
-    (deltachi)**(2) + ((2 + (k1 + k2)) * (chicons)**(2) + -2 * (r)**(1/2) \
-    * ((k1 + -1 * k2) * deltachi + (2 + (k1 + k2)) * chicons)))))**(1/2) \
-    + (-1 * k1 * deltachi * ((4 * r + ((1 + -1 * k1 * k2) * \
-    (deltachi)**(2) + ((2 + (k1 + k2)) * (chicons)**(2) + -2 * (r)**(1/2) \
-    * ((k1 + -1 * k2) * deltachi + (2 + (k1 + k2)) * chicons)))))**(1/2) \
-    + k2 * deltachi * ((4 * r + ((1 + -1 * k1 * k2) * (deltachi)**(2) + \
-    ((2 + (k1 + k2)) * (chicons)**(2) + -2 * (r)**(1/2) * ((k1 + -1 * k2) \
-    * deltachi + (2 + (k1 + k2)) * \
-    chicons)))))**(1/2))))))))))))))))))**(2))
-    dchidt2 =( pre_2 * sin1_2 * sin2_2 * sinDeltaPhi_2)
-    #print( pre_2, sin1_2, sin2_2, sinDeltaPhi_2)
-    return np.where(dchidt2>0, dchidt2,np.nan)
+
+
+
+def dchidt_math_RHS(deltachi, kappa, r,  chicons,  q, chi1, chi2, k1,k2):
+    from wolframclient.evaluation import WolframLanguageSession
+    from wolframclient.language import wlexpr
+
+    with WolframLanguageSession() as session:
+        code = f"""
+            expr = (1/(4 (1 + 
+   q)^6 r^7)) 9 q^2 chi1^2 chi2^2 (1 - ((1 + 
+      q)^2 (2 Sqrt[r] + (1 + k2) deltachi - Sqrt[
+      4 r + (1 - k1 k2) deltachi^2 + (2 + k1 + 
+          k2) chicons^2 - 
+       2 Sqrt[r] ((k1 - k2) deltachi + (2 + k1 + 
+             k2) chicons)])^2)/((2 + k1 + 
+      k2)^2 chi1^2)) (-2 (1 + q) Sqrt[
+    r] + ((1 + k1) (1 + q) (2 Sqrt[r] + (1 + k2) deltachi - 
+      Sqrt[4 r + (1 - k1 k2) deltachi^2 + (2 + k1 + 
+          k2) chicons^2 - 
+       2 Sqrt[r] ((k1 - k2) deltachi + (2 + k1 + 
+             k2) chicons)]))/(
+   2 + k1 + 
+    k2) - ((1 + k2) (1 + q) (-2 Sqrt[r] + (1 + k1) deltachi + 
+      Sqrt[4 r + (1 - k1 k2) deltachi^2 + (2 + k1 + 
+          k2) chicons^2 - 
+       2 Sqrt[r] ((k1 - k2) deltachi + (2 + k1 + 
+             k2) chicons)]))/(
+   2 + k1 + 
+    k2))^2 (1 - ((1 + q)^2 (-2 Sqrt[r] + (1 + k1) deltachi + 
+      Sqrt[4 r + (1 - k1 k2) deltachi^2 + (2 + k1 + 
+          k2) chicons^2 - 
+       2 Sqrt[r] ((k1 - k2) deltachi + (2 + k1 + 
+             k2) chicons)])^2)/((2 + k1 + 
+      k2)^2 q^2 chi2^2)) (1 - ((2 + k1 + 
+        k2)^4 (-2 (chi1^2 + q^4 chi2^2) + (
+        4 q (1 + q) Sqrt[
+         r] (k (2 + k1 + k2) (1 + q) - 
+           2 (1 + q) Sqrt[
+            r] + (-1 - k2 + q + k1 q) deltachi + (1 + q) Sqrt[
+            4 r + (1 - k1 k2) deltachi^2 + (2 + k1 + 
+                k2) chicons^2 - 
+             2 Sqrt[r] ((k1 - k2) deltachi + (2 + k1 + 
+                   k2) chicons)]))/(2 + k1 + k2) + (
+        1/((2 + k1 + k2)^2))
+        4 q (1 + 
+           q)^2 (-8 r + (k1 + k2 + 2 k1 k2) deltachi^2 - (2 + 
+              k1 + k2) chicons^2 - 
+           k1 deltachi Sqrt[
+            4 r + (1 - k1 k2) deltachi^2 + (2 + k1 + 
+                k2) chicons^2 - 
+             2 Sqrt[r] ((k1 - k2) deltachi + (2 + k1 + 
+                   k2) chicons)] + 
+           k2 deltachi Sqrt[
+            4 r + (1 - k1 k2) deltachi^2 + (2 + k1 + 
+                k2) chicons^2 - 
+             2 Sqrt[r] ((k1 - k2) deltachi + (2 + k1 + 
+                   k2) chicons)] + 
+           2 Sqrt[r] (2 (k1 - k2) deltachi + (2 + k1 + 
+                 k2) chicons + 
+              2 Sqrt[4 r + (1 - k1 k2) deltachi^2 + (2 + k1 + 
+                   k2) chicons^2 - 
+                2 Sqrt[r] ((k1 - k2) deltachi + (2 + k1 + 
+                    k2) chicons)])))^2)/(16 q^2 ((2 + k1 + 
+           k2)^2 chi1^2 - (1 + 
+           q)^2 (2 Sqrt[r] + (1 + k2) deltachi - Sqrt[
+           4 r + (1 - k1 k2) deltachi^2 + (2 + k1 + 
+               k2) chicons^2 - 
+            2 Sqrt[r] ((k1 - k2) deltachi + (2 + k1 + 
+                  k2) chicons)])^2) ((2 + k1 + 
+           k2)^2 q^2 chi2^2 - (1 + 
+           q)^2 (-2 Sqrt[r] + (1 + k1) deltachi + Sqrt[
+           4 r + (1 - k1 k2) deltachi^2 + (2 + k1 + 
+               k2) chicons^2 - 
+            2 Sqrt[r] ((k1 - k2) deltachi + (2 + k1 + 
+                  k2) chicons)])^2)));
+
+           solido= NSolve[
+               ( expr /. {{
+                    q -> {q},
+                    r -> {r},
+                    chi1 -> {chi1},
+                    chi2 -> {chi2},
+                    k1 -> {k1},
+                    k2 -> {k2},
+                    chicons -> {chicons},
+                    k -> {kappa}
+                }})== 0 && -1 < deltachi < 1,
+                deltachi,
+                Reals
+            ]
+            N[deltachi /. solido]
+        """
+
+    result = session.evaluate(wlexpr(code))
+    return result
+
+            
+
 
 
 def dchidt_RHS(deltachi, kappa, chicons, u, q, chi1, chi2, k1,k2):
@@ -934,9 +1035,10 @@ def deltachiroots(kappa,  u, chicons, q, chi1, chi2, k1, k2, precomputedroots=No
     r=precession.eval_r(u=u, q=q)
 
     if precomputedroots is None:
-        grid_size = int(1e4) 
+        grid_size = int(1e3) 
         x = np.linspace(-1, 1, grid_size)
-        y = dchidt2_RHS(x, kappa, r, chicons, q, chi1, chi2, k1, k2)
+        y=sin1_2(x, r,  chicons,  q, chi1, k1,k2) * sin2_2(x, r,  chicons,  q, chi2, k1,k2) * sinDeltaPhi_2(x,  r,kappa,  chicons,  q, chi1, chi2, k1,k2)
+        #y = dchidt2_RHS(x,kappa,r,chicons,q,chi1,chi2,k1,k2)
         mask = np.isfinite(y)
         spl = CubicSpline(x[mask],y[mask]/np.max(y[mask]) )
         roots= spl.roots()
@@ -1014,7 +1116,7 @@ def eval_tau(kappa, r, chicons,  q, chi1, chi2, k1, k2, precomputedbounds=None):
     
     def _integrand_tau(deltachi, kappa, chicons, r, q, chi1, chi2, k1, k2):
         dchidt2 = dchidt2_RHS(deltachi, kappa, r,  chicons, q, chi1, chi2,k1,k2) 
-        return 1 / dchidt2**(1/2)
+        return 1 / np.abs(dchidt2)**(1/2)
     
     def _compute(roots, kappa, chicons, r, q, chi1, chi2,k1,k2):
         #print(roots[0],roots[1])
@@ -1123,7 +1225,7 @@ def deltachi_plusminus(kappa, u, chicons, q, chi1, chi2, k1, k2, precomputedroot
             deltachiplus = deltachiplus1
 
     elif len(valid_roots) == 4:
-        print('4 roots at:', kappa, r,chicons)
+        print('4 roots at:', kappa, r,chicons, valid_roots)
         deltachiminus1 = valid_roots[0]
         deltachiplus1 = valid_roots[1]
         tau1= eval_tau( kappa,r, chicons, q, chi1, chi2, k1, k2,precomputedbounds=[deltachiminus1,deltachiplus1]).T[0]
@@ -1226,7 +1328,7 @@ def deltachisampling(kappa, r, chicons, q, chi1, chi2, k1, k2, N=1, precomputedr
 
 ###@jit(nopython=True, cache=True)
 def dydt(t, y, kappa,  r,chicons, q, chi1, chi2, k1, k2):
-    return (dchidt2_RHS(y[0], kappa, r, chicons, q, chi1, chi2, k1,k2))**(1/2)
+    return np.abs(dchidt2_RHS(y[0], kappa, r, chicons, q, chi1, chi2, k1,k2))**(1/2)
 
 def deltachioft(t, kappa, r, chicons, q, chi1, chi2, k1, k2, precomputedroots=None, precomputedtau=None, intial_deltachi=None, initial_time=0):
     """
